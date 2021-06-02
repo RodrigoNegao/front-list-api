@@ -1,7 +1,7 @@
 //
 // Script do Login
 //
-const link = "http://localhost:3000/"
+const link = "http://localhost:3000"
 
 //alert não é resevado mas da conflito com comando alert
 var alert1 = document.getElementById("alert");
@@ -16,8 +16,8 @@ function login() {
   let password = document.getElementById("password");
   axios
     .post(link + "/login", {
-      name: user_name,
-      password: password
+      name: user_name.value,
+      password: password.value
     })
     .then((response) => {
       console.log(response);

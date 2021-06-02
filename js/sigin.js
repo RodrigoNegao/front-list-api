@@ -3,7 +3,7 @@
 //
 
 
-const link = "http://localhost:3000/"
+const link = "http://localhost:3000"
 
 //alert não é resevado mas da conflito com comando alert
 var alert1 = document.getElementById("alert");
@@ -16,16 +16,15 @@ function addUser() {
   let password1 = document.getElementById("password1");
   let password2 = document.getElementById("password2"); 
 
-  function passwordCheck(user_name, p1, p2) {
+  function passwordCheck(user, p1, p2) {
     if (p1 === p2) {
       axios
         .post(link + "/signin", {
-          name: user_name,
-          password: password
+          name: user,
+          password: p2
         })
         .then((response) => {
           console.log(response);
-          console.log('ir para o link');
         })
         .catch((error) => {
           console.log(error);
