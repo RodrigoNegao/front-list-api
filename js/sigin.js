@@ -24,10 +24,10 @@ function addUser() {
           password: p2
         })
         .then((response) => {
-          console.log(response);
+          console.log(response.data.msg);
         })
         .catch((error) => {
-          console.log(error);
+          console.log(error.response.data.msg);
         });  
       //Cadastro feito com sucesso Alert Bootstrap
     } else {
