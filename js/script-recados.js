@@ -1,8 +1,10 @@
 //
 // Script da Pagina Recados
 //
+
 var data;
-const link = "http://localhost:3000"
+const link = "https://backlistapi.herokuapp.com";
+
 window.addEventListener("load", () => {
   //Todos os elementos do DOM e scripts estão disponiveis
   axios.get(link + "/messages").then((resposta) => {
@@ -28,9 +30,9 @@ function listLoad() {
   list.innerHTML = "";
   for (let prop in data) {
     list.innerHTML += `<tr>
-    <td id="num${data[prop].id}"><strong>${data[prop].id}</strong></td>
-    <td>${data[prop].title}</td>
-    <td class="col-7">${data[prop].detail}</td>
+    <td id="num-${data[prop].id}"><strong>${data[prop].id}</strong></td>
+    <td id="title-${data[prop].id}">${data[prop].title}</td>
+    <td class="col-7" id="detail-${data[prop].id}">${data[prop].detail}</td>
     <td>
       <button onclick="edit(this.id)" id="edit-${data[prop].id}" type="button" class="btn btn-success">
         Editar
@@ -55,11 +57,13 @@ function newRecado() {
       detail: detalhamento.value
     })
     .then((response) => {
-      console.log(response);
-      console.log('ir para o link');
+      console.log(response.data.msg);
+      setTimeout(() => {
+        location.reload();
+      }, 2000);
     })
     .catch((error) => {
-      console.log(error);
+      console.log(error.response.data.msg);
     });
 
   alert.style.display = "block";
@@ -68,7 +72,6 @@ function newRecado() {
   detalhamento.value = "";
   
   //listLoad();
-  location.reload(); 
 }
 
 //Editar
@@ -80,12 +83,10 @@ function edit(obj) {
   saveEditBtn.style.display = "block";
   saveBtn.style.display = "none";
   //#TODO copiar os valores e colocar no input
-  // for (let prop in recados) {
-  //   if (editId === prop) {
-  //     descricao.value = recados[prop].descricao;
-  //     detalhamento.value = recados[prop].detalhamento;
-  //   }
-  // }
+  titleValue = document.getElementById(`title-${editId}`).innerText;
+  detailValue = document.getElementById(`detail-${editId}`).innerText;
+  descricao.value = titleValue;
+  detalhamento.value = detailValue;
   alert.style.display = "none";
   //console.log(editId);
 }
@@ -100,11 +101,13 @@ function saveBtnEdit() {
       detail: detalhamento.value
     })
     .then((response) => {
-      console.log(response);
-      location.reload();
+      console.log(response.data.msg);
+      setTimeout(() => {
+        location.reload();
+      }, 2000);
     })
     .catch((error) => {
-      console.log(error);
+      console.log(error.response.data.msg);
     });
 
 
@@ -142,11 +145,13 @@ function confirmDelete() {
   axios
     .delete(link + "/message/" + deleteId)
     .then((response) => {
-      console.log(response);
-      location.reload();
+      console.log(response.data.msg);
+      setTimeout(() => {
+        location.reload();
+      }, 1000);
     })
     .catch((error) => {
-      console.log(error);
+      console.log(error.response.data.msg);
     });
 
   //listLoad();

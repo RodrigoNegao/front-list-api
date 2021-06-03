@@ -1,7 +1,7 @@
 //
 // Script do Login
 //
-const link = "http://localhost:3000"
+link = "https://backlistapi.herokuapp.com"; //"http://localhost:3000"
 
 //alert não é resevado mas da conflito com comando alert
 var alert1 = document.getElementById("alert");
@@ -20,10 +20,10 @@ function login() {
       password: password.value
     })
     .then((response) => {
-      console.log(response);
+      console.log(response.data.msg);
       console.log('ir para o link');
     })
     .catch((error) => {
-      console.log(error);
+      console.log(error.response.data.msg);
     });  
 }

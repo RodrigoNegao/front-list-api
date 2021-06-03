@@ -2,8 +2,7 @@
 // Script Cadastro
 //
 
-
-const link = "http://localhost:3000"
+const link = "https://backlistapi.herokuapp.com"
 
 //alert não é resevado mas da conflito com comando alert
 var alert1 = document.getElementById("alert");
