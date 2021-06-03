@@ -14,8 +14,6 @@ window.addEventListener("load", () => {
 });
 
 var list = document.getElementById("list");
-// var item; //GlobalVariable
-// var recados; //GlobalVariable
 
 var alert = document.getElementById("alert");
 alert.style.display = "none";
@@ -34,13 +32,13 @@ function listLoad() {
     <td id="title-${data[prop].id}">${data[prop].title}</td>
     <td class="col-7" id="detail-${data[prop].id}">${data[prop].detail}</td>
     <td>
-      <button onclick="edit(this.id)" id="edit-${data[prop].id}" type="button" class="btn btn-success">
-        Editar
-      </button>
       <button onclick="del(this)" id="del-${data[prop].id}" type="button" data-bs-toggle="modal"
       data-bs-target="#exampleModal" class="btn btn-danger">
-        Excluir
+        Apagar
       </button>
+      <button onclick="edit(this.id)" id="edit-${data[prop].id}" type="button" class="btn btn-success">
+        Editar
+      </button>      
     </td>
     </tr>`;
   }
