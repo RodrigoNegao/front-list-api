@@ -21,7 +21,7 @@ function login() {
     })
     .then((response) => {
       console.log(response.data.msg);
-      console.log('ir para o link');
+      location.href = './pages/lista_de_recados.html';
     })
     .catch((error) => {
       console.log(error.response.data.msg);

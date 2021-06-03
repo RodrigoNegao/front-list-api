@@ -24,6 +24,8 @@ function addUser() {
         })
         .then((response) => {
           console.log(response.data.msg);
+          alert1.style.display = "block"; //criar alerta bootstrap
+          alert1.getElementsByTagName("p")[0].innerHTML = response.data.msg;
         })
         .catch((error) => {
           console.log(error.response.data.msg);
@@ -31,7 +33,7 @@ function addUser() {
       //Cadastro feito com sucesso Alert Bootstrap
     } else {
       alert1.style.display = "block"; //criar alerta bootstrap
-      alert1.getElementsByTagName("p")[1].innerHTML = "Senhas não conferem.";
+      alert1.getElementsByTagName("p")[0].innerHTML = "Senhas não conferem.";
       password1.value = "";
       password2.value = "";
       password1.focus();
